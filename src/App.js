@@ -5,6 +5,7 @@ import { Room } from './Room'
 import { OrbitControls, BakeShadows, ContactShadows } from '@react-three/drei'
 import { Env } from './Env'
 import { Ground } from './Ground'
+import { HeadLights } from './HeadLights'
 import {
   EffectComposer,
   Bloom,
@@ -19,7 +20,10 @@ const App = () => {
       <Env />
 
       <Suspense fallback={null}>
-        <Tesla position={[0, -0.08, 0]} />
+        <group>
+          <Tesla position={[0, -0.08, 0]} name="tesla" />
+          <HeadLights />
+        </group>
         <Room scale={[1.2, 1.2, 1.2]} position={[0, -0.2, 0]} visible={false} />
         <Ground />
         <ContactShadows
